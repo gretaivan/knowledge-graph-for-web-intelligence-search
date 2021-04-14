@@ -1,0 +1,137 @@
+<?xml version="1.0"?>
+<rdf:RDF 
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:so="http://schema.org/"
+	xmlns:owl = "https://www.w3.org/2002/07/owl#"
+	xmlns:dict="http://dictionary.cambridge.org/dictionary/english/"
+	xml:base="https://www.climatetagger.net/climate-thesaurus/">
+	
+	<!-- Descriptions at SCHEMA LEVEL (RDFS) -->
+	
+	<rdf:Description rdf:ID="climate-change">
+		<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+		<rdfs:isDefinedBy rdf:resource="https://www.climatetagger.net/glossary/climate-change/?uri=http://reegle.info/glossary/1018"/>
+		<rdfs:label>Climate change</rdfs:label>
+	</rdf:Description>
+	
+	<rdf:Description rdf:ID="climate-change-mitigation">
+		<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+		<rdfs:isDefinedBy rdf:resource="https://www.climatetagger.net/glossary/climate-change-mitigation/?uri=http://reegle.info/glossary/1127"/>
+		<rdfs:label>Mitigation</rdfs:label>
+		<dict:mitigate rdf:resource="#climate-change"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:ID="low-carbon-economy">
+		<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+		<rdfs:subClassOf rdf:resource="#climate-change-mitigation"/>
+		<rdfs:isDefinedBy rdf:resource="https://www.climatetagger.net/glossary/low-carbon-development/?uri=http://reegle.info/glossary/1211"/>
+		<rdfs:label>Low Carbon Economy</rdfs:label>
+	</rdf:Description>
+	
+	<rdf:Description rdf:ID="climate-change-risk">
+		<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+		<rdfs:subClassOf rdf:resource="#climate-change"/>
+		<rdfs:isDefinedBy rdf:resource="https://www.climatetagger.net/glossary/climate-change-impacts/?uri=http://reegle.info/glossary/1096"/>
+		<rdfs:label>Climate Change Risk</rdfs:label>
+		<dict:affect rdf:resource="#sector"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:ID="natural-disasters">
+		<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+		<rdfs:subClassOf rdf:resource="#climate-change-risk"/>
+		<rdfs:isDefinedBy rdf:resource="https://www.climatetagger.net/glossary/natural-disasters/?uri=http://reegle.info/glossary/1573"/>
+		<rdfs:label>Natural Disasters</rdfs:label>
+	</rdf:Description>
+	
+	<rdf:Description rdf:ID="adaptation">
+		<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+		<rdfs:isDefinedBy rdf:resource="https://www.climatetagger.net/glossary/climate-change-adaptation/?uri=http://reegle.info/glossary/1126"/>
+		<rdfs:label>Adaptation</rdfs:label>
+		<dict:respond rdf:resource="#climate-change-risk"/>
+		<dict:regulate rdf:resource="#sector"/>
+		<dict:set rdf:resource="#framework"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:ID="sector">
+		<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+		<rdfs:isDefinedBy rdf:resource="https://www.climatetagger.net/glossary/sectors-for-sustainable-development/?uri=http://reegle.info/glossary/2621"/>
+		<rdfs:label>Sector</rdfs:label>
+		<dict:provide rdf:resource="#ecosystem-services"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:ID="maladaptation">
+		<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+		<rdfs:subClassOf rdf:resource="#adaptation"/>
+		<rdfs:isDefinedBy rdf:resource="https://www.climatetagger.net/glossary/maladaptation/?uri=http://reegle.info/glossary/1494"/>
+		<rdfs:label>Mal-adaptation</rdfs:label>	
+	</rdf:Description>
+	
+	<rdf:Description rdf:ID="framework">
+		<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+		<rdfs:isDefinedBy rdf:resource="https://www.climatetagger.net/glossary/adaptation-framework/?uri=http://reegle.info/glossary/1365"/>
+		<rdfs:label>Framework</rdfs:label>
+		<dict:protect rdf:resource="#ecosystem-services"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:ID="ecosystem-services">
+		<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+		<rdfs:isDefinedBy rdf:resource="https://www.climatetagger.net/glossary/ecosystem-services/?uri=http://reegle.info/glossary/4144"/>
+		<rdfs:label>Ecosystem services</rdfs:label>
+		<dict:protect rdf:resource="#ecosystem-services"/>
+	</rdf:Description>
+	
+	
+	<!--descriptions at INSTANCE LEVEL (RDF)-->
+	
+	
+	<rdf:Description rdf:about="https://www.climatetagger.net/glossary/disappearing-glaciers/?uri=http://reegle.info/glossary/1409">
+		<rdf:type rdf:resource="#climate-change"/>
+		<so:name>Glacier melt</so:name>
+   </rdf:Description>
+   
+   <rdf:Description rdf:about="https://www.eesi.org/topics/energy-efficiency/description">
+		<rdf:type rdf:resource="#low-carbon-economy"/>
+		<so:name>Energy efficiency</so:name>
+   </rdf:Description>
+	
+	<rdf:Description rdf:about="https://www.britannica.com/technology/carbon-sequestration">
+		<rdf:type rdf:resource="#ecosystem-services"/>
+		<so:name>Carbon Sequestration</so:name>
+   </rdf:Description>
+   
+   <rdf:Description rdf:about="https://en.wikipedia.org/wiki/Coastal_erosion">
+		<rdf:type rdf:resource="#climate-change-risk"/>
+ 		<so:name>Coastal erosion</so:name>
+    </rdf:Description>
+   
+	<rdf:Description rdf:about="https://www.climatetagger.net/glossary/floods/?uri=http://reegle.info/glossary/1317">
+		<rdf:type rdf:resource="#natural-disasters"/>
+ 		<so:name>Floods</so:name>
+    </rdf:Description>
+	
+	<rdf:Description rdf:about="https://www.climatetagger.net/glossary/droughts/?uri=http://reegle.info/glossary/1397">
+		<rdf:type rdf:resource="#natural-disasters"/>
+ 		<so:name>Drought</so:name>
+    </rdf:Description>
+	
+	<rdf:Description rdf:about="https://www.climatetagger.net/glossary/agriculture/?uri=http://reegle.info/glossary/967">
+		<rdf:type rdf:resource="#sector"/>
+ 		<so:name>Agriculture</so:name>
+    </rdf:Description>
+	
+	<rdf:Description rdf:about="https://en.wikipedia.org/wiki/Aquaculture">
+		<rdf:type rdf:resource="#sector"/>
+ 		<so:name>Aquaculture</so:name>
+    </rdf:Description>
+	
+	<rdf:Description rdf:about="https://www.britannica.com/technology/cooling-system">
+		<rdf:type rdf:resource="#maladaptation"/>
+ 		<so:name>Cooling Technologies</so:name>
+    </rdf:Description>
+	
+	<rdf:Description rdf:about="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex%3A32000L0060">
+		<rdf:type rdf:resource="#framework"/>
+ 		<so:name>Water Framework Directive</so:name>
+    </rdf:Description>
+</rdf:RDF>
